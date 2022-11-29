@@ -1,3 +1,4 @@
+// Link: https://leetcode.com/problems/longest-substring-without-repeating-characters/
 class Solution {
     public int lengthOfLongestSubstring(String s) {
         if (s.length() == 0) {
