@@ -1,28 +1,26 @@
 // Link: https://leetcode.com/problems/number-of-provinces/description/
 class Solution {
     boolean[] seen;
-    int[][] gr;
 
-    public void dfs(int node) {
-        for (int i = 0; i < gr.length; ++i) {
-            if (gr[node][i] == 1 && !seen[i]) {
+    public void dfs(int node, int[][] isConnected) {
+        for (int i = 0; i < isConnected.length; ++i) {
+            if (isConnected[node][i] == 1 && !seen[i]) {
                 seen[i] = true;
-                dfs(i);
+                dfs(i, isConnected);
             }
         }
     }
 
     public int findCircleNum(int[][] isConnected) {
-        gr = isConnected;
         seen = new boolean[isConnected.length];
         int ans = 0;
         for (int i = 0; i < isConnected.length; ++i) {
             if (!seen[i]) {
                 ++ans;
-                dfs(i);
+                dfs(i, isConnected);
             }
         }
         return ans;
     }
 }
-// Beats: 99.98% in Runtime, 5.12% in Memory
+// Beats: 99.98% in Runtime, 20.24% in Memory
